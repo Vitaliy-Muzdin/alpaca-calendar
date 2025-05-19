@@ -1,0 +1,37 @@
+$color-scheme: light dark;
+:root {
+    --font-family-base: 'Roboto-Medium';
+    --font-family-regular: 'Roboto-Regular';
+    --color-scheme: $color-scheme;
+    --line-height: 24px;
+    --transition-duration: .5s;
+    --color-white: rgba(255, 255, 255, 1);
+    --color-white-075: rgba(255, 255, 255, 0.75);
+    --color-white-05: rgba(255, 255, 255, 0.5);
+    --color-white-02: rgba(255, 255, 255, 0.2);
+    --color-white-button-month-02: rgba(255, 255, 255, 0.2);
+    --color-white-0: rgba(255, 255, 255, 0);
+    --color-light-white: rgba(217, 217, 217, 1);
+    --color-blue: rgba(45, 156, 219, 1);
+    --color-blue-075: rgba(45, 156, 219, 0.75);
+    --color-blue-05: rgba(45, 156, 219, 0.5);
+    --color-blue-0: rgba(45, 156, 219, 0);
+    --color-black: #000;
+    --color-black-09: rgba(19, 20, 23, 0.9);
+    --color-black-03: rgba(19, 20, 23, 0.3);
+    --color-black-01: rgba(19, 20, 23, 0.1);
+    --color-black-0: rgba(19, 20, 23, 0);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+    a:hover {
+        color: #747bff;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
+}

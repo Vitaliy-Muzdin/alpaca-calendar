@@ -1,0 +1,403 @@
+@use 'sass:math';
+
+$vw: 100vw;
+$maxViewportWidth: 1280;
+$minViewportWidth: 320;
+$maxWidth: math.div($maxViewportWidth, 16);
+$minWidth: math.div($minViewportWidth, 16);
+
+@mixin text-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    font-size: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin line-height-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    line-height: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin width-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    width: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin height-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    height: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin top-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    top: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin right-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    right: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin bottom-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    bottom: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin left-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    left: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin border-radius-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    border-radius: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin padding-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    padding: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin padding-block-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    padding-block: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin padding-top-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    padding-top: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin padding-left-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    padding-left: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin padding-bottom-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    padding-bottom: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin padding-right-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    padding-right: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin margin-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    margin: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin margin-block-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    margin-block: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin margin-top-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    margin-top: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin margin-left-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    margin-left: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin margin-bottom-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    margin-bottom: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin margin-right-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    margin-right: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@mixin grid-row-gap-mixin($max: auto, $min: auto) {
+    $maxSize: math.div($max, 16);
+    $minSize: math.div($min, 16);
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxisIntersection: -$minWidth * $slope + $minSize;
+
+    grid-row-gap: clamp(
+        #{$minSize * 1rem},
+        #{$yAxisIntersection * 1rem} + #{$slope * $vw},
+        #{$maxSize * 1rem}
+    );
+}
+
+@function rem() {
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + rem;
+    } @else {
+        @error 'Не используйте единицы измерения при работе с функцией rem()! Передавайте аргументом только числа.';
+    }
+}
+
+@mixin reset-link {
+    color: inherit;
+    &,
+    &:hover {
+        text-decoration: none;
+    }
+}
+@mixin flex-center($isInlile: false) {
+    @if $isInlile {
+        display: inline-flex;
+    } @else {
+        display: flex;
+    }
+
+    justify-content: center;
+    align-items: center;
+}
+@mixin reset-button {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    border: 0;
+}
+@mixin background-image($url-image) {
+    background-image: url($url-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@mixin background-image-set-jpg(
+        $url-image-avif, 
+        $url-image-webp, 
+        $url-image-jpg, 
+        $url-image-two-avif, 
+        $url-image-two-webp, 
+        $url-image-two-jpg
+    ) {
+    background-image: image-set(
+        url($url-image-avif) 1x type("image/avif"),
+        url($url-image-webp) 1x type("image/webp"),
+        url($url-image-jpg) 1x,
+        url($url-image-two-avif) 2x type("image/avif"),
+        url($url-image-two-webp) 2x type("image/webp"),
+        url($url-image-two-jpg) 2x
+    );
+    background-image: -webkit-image-set(
+        url($url-image-avif) 1x type("image/avif"),
+        url($url-image-webp) 1x type("image/webp"),
+        url($url-image-jpg) 1x,
+        url($url-image-two-avif) 2x type("image/avif"),
+        url($url-image-two-webp) 2x type("image/webp"),
+        url($url-image-two-jpg) 2x
+    );
+}
+@mixin background-image-set-png(
+        $url-image-avif, 
+        $url-image-webp, 
+        $url-image-png, 
+        $url-image-two-avif, 
+        $url-image-two-webp, 
+        $url-image-two-png
+    ) {
+    background-image: image-set(
+        url($url-image-avif) 1x type("image/avif"),
+        url($url-image-webp) 1x type("image/webp"),
+        url($url-image-png) 1x,
+        url($url-image-two-avif) 2x type("image/avif"),
+        url($url-image-two-webp) 2x type("image/webp"),
+        url($url-image-two-png) 2x
+    );
+    background-image: -webkit-image-set(
+        url($url-image-avif) 1x type("image/avif"),
+        url($url-image-webp) 1x type("image/webp"),
+        url($url-image-png) 1x,
+        url($url-image-two-avif) 2x type("image/avif"),
+        url($url-image-two-webp) 2x type("image/webp"),
+        url($url-image-two-png) 2x
+    );
+}

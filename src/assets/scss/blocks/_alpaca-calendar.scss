@@ -1,0 +1,452 @@
+.alpaca-calendar {
+    position: relative;
+    @include background-image('../images/alpaca.jpg');
+    @include background-image-set-jpg(
+        '../images/alpaca.avif', 
+        '../images/alpaca.webp', 
+        '../images/alpaca.jpg', 
+        '../images/alpaca-two.avif', 
+        '../images/alpaca-two.webp', 
+        '../images/alpaca-two.jpg'
+    );
+    background-color: var(--color-black-09);
+    background-blend-mode: color;
+    @include border-radius-mixin(10.5, 4.5);
+    @include width-mixin(560, 240);
+    margin: auto;
+    @include padding-block-mixin(14, 6);
+    &__buttons {}
+    &__button {
+        position: absolute;
+        @include reset-button;
+        @include top-mixin(21, 9);
+        @include width-mixin(56, 24);
+        aspect-ratio: 1 / 1;
+        @include flex-center(true);
+        transition-duration: var(--transition-duration);
+        @include border-radius-mixin(14, 6);
+        cursor: pointer;
+        @include hover {
+            background: var(--color-white-button-month-02);
+            backdrop-filter: blur(0.25rem);
+        }
+        @include tablet {
+            @include hover {
+                background-color: transparent;
+                backdrop-filter: none;
+            }
+        }
+        &-icon {
+            cursor: pointer;
+            &::before {
+                content: '';
+                background-color: var(--color-light-white);
+                @include width-mixin(21, 9);
+                @include height-mixin(21, 9);
+                display: block;
+            }
+        }
+        &-left {
+            @include left-mixin(14, 6);
+        }
+        &-left > &-icon {
+            &::before {
+                clip-path: polygon(70.71% 0%, 83.34% 11.5%, 41.86% 49.86%, 83.29% 88.29%, 70.86% 99.86%, 16.71% 49.86%);
+            }
+        }
+        &-right {
+            @include right-mixin(14, 6);
+        }
+        &-right > &-icon {
+            &::before {
+                clip-path: polygon(16.86% 11.57%, 29.48% 0%, 83.57% 50%, 29.43% 100%, 16.71% 88.29%, 58.14% 49.86%);
+            }
+        }
+    }
+    &__month {
+        @include height-mixin(70, 30);
+        @include margin-bottom-mixin(14, 6);
+        @include flex-center(false);
+        @include text-mixin(21, 9);
+        font-family: var(--font-family-base);
+        @include line-height-mixin(24.5, 10.5);
+        text-transform: uppercase;
+        color: var(--color-white);
+    }
+    &__numbers {
+        display: grid;
+        grid-template-columns: 1.172fr repeat(5, minmax(0, 1fr)) 1.172fr;
+        @include grid-row-gap-mixin(14, 6);
+        @include padding-block-mixin(7, 3);
+    }
+    &__number {
+        width: 100%;
+        @include height-mixin(63, 27);
+        &:nth-child(7n + 1) {
+            @include padding-left-mixin(14, 6);
+        }
+        &:nth-child(7n + 7) {
+            @include padding-right-mixin(14, 6);
+        }
+        &-button {
+            position: relative;
+            @include reset-button;
+            width: 100%;
+            height: 100%;
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: var(--font-family-base);
+            color: var(--color-white);
+            transition-duration: 0s;
+            &-text {
+                position: relative;
+                z-index: 1;
+                background-color: var(--color-white-0);
+                transition-property: background-color;
+                @include width-mixin(63, 27);
+                @include height-mixin(63, 27);
+                border-radius: 6.25rem;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    border: 0.0625rem solid var(--color-black-0);
+                    background-color: var(--color-black-0);
+                    transition-property: background-color, border;
+                    border-radius: 6.25rem;
+                    inset: 0;
+                    @include width-mixin(56, 24);
+                    @include height-mixin(56, 24);
+                    margin: auto;
+                    z-index: -1;
+                }
+            }
+            @include hover {
+                transition-duration: var(--transition-duration);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-black);
+                    background-color: var(--color-white);
+                    transition-duration: var(--transition-duration);
+                }
+                .alpaca-calendar__number-button-text::after {
+                    border: 0.0625rem solid var(--color-black-01);
+                    background-color: var(--color-black-03);
+                    transition-duration: var(--transition-duration);
+                }
+            }
+            @include tablet {
+                .alpaca-calendar__number-button-text {
+                    transition-duration: 0s;
+                }
+                .alpaca-calendar__number-button-text::after {
+                    transition-duration: 0s;
+                }
+                @include hover {
+                    .alpaca-calendar__number-button-text {
+                        background-color: transparent;
+                        color: var(--color-white);
+                        transition-duration: 0s;
+                    }
+                    .alpaca-calendar__number-button-text::after {
+                        border: 0.0625rem solid transparent;
+                        background-color: transparent;
+                        transition-duration: 0s;
+                    }
+                }
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                background-color: var(--color-white-0);
+                transition-property: background-color;
+                inset: 0;
+                transition-duration: 0s;
+                border-radius: 6.25rem 0 0 6.25rem;
+                margin: auto 0 auto auto;
+                @include width-mixin(70, 30);
+                @include height-mixin(63, 27);
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                background-color: var(--color-white-0);
+                transition-property: background-color;
+                inset: 0;
+                transition-duration: 0s;
+                border-radius: 0 6.25rem 6.25rem 0;
+                margin: auto auto auto 0;
+                @include width-mixin(70, 30);
+                @include height-mixin(63, 27);
+            }
+        }
+        &-next {}
+        &-next > &-button {
+            color: var(--color-white-05);
+            .alpaca-calendar__number-button-text {
+                color: var(--color-white-05);
+            }
+            @include hover {
+                color: var(--color-black);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-black);
+                }
+            }
+            @include tablet {
+                color: var(--color-white-05);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-white-05);
+                }
+                @include hover {
+                    background-color: transparent;
+                    color: var(--color-white-05);
+                    .alpaca-calendar__number-button-text {
+                        color: var(--color-white-05);
+                    }
+                }
+            }
+        }
+        &_checked > &-button {
+            .alpaca-calendar__number-button-text {
+                color: var(--color-black);
+                background-color: var(--color-white);
+            }
+            .alpaca-calendar__number-button-text::after {
+                border: 0.0625rem solid var(--color-black-01);
+                background-color: var(--color-black-03);
+            }
+            &::before {
+                background-color: transparent;
+            }
+            &::after {
+                background-color: transparent;
+            }
+        }
+        &_checked-first > &-button {
+            &::before {
+                background-color: var(--color-white);
+            }
+            &::after {
+                background-color: transparent;
+            }
+        }
+        &_checked-last > &-button {
+            &::before {
+                background-color: transparent;
+            }
+            &::after {
+                background-color: var(--color-white);
+            }
+        }
+        &_selected {
+            background-color: var(--color-white);
+        }
+        &_selected > &-button {
+            color: var(--color-black);
+            .alpaca-calendar__number-button-text {
+                color: var(--color-black);
+            }
+        }
+        &-next.alpaca-calendar__number_checked > &-button {
+            color: var(--color-black);
+            .alpaca-calendar__number-button-text {
+                color: var(--color-black);
+            }
+            @include hover {
+                color: var(--color-black);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-black);
+                }
+            }
+            @include tablet {
+                color: var(--color-black);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-black);
+                }
+                @include hover {
+                    background-color: transparent;
+                    color: var(--color-black);
+                    .alpaca-calendar__number-button-text {
+                        background-color: transparent;
+                        color: var(--color-black);
+                    }
+                }
+            }
+        }
+        &-next.alpaca-calendar__number_selected > &-button {
+            color: var(--color-black);
+            .alpaca-calendar__number-button-text {
+                color: var(--color-black);
+            }
+            @include hover {
+                color: var(--color-black);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-black);
+                }
+            }
+            @include tablet {
+                color: var(--color-black);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-black);
+                }
+                @include hover {
+                    background-color: transparent;
+                    color: var(--color-black);
+                    .alpaca-calendar__number-button-text {
+                        background-color: transparent;
+                        color: var(--color-black);
+                    }
+                }
+            }
+        }
+    }
+}
+.blue-theme .alpaca-calendar {
+    &__number {
+        &-button {
+            @include hover {
+                color: var(--color-white);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-white);
+                    background-color: var(--color-blue);
+                }
+            }
+            @include tablet {
+                .alpaca-calendar__number-button-text {
+                    transition-duration: 0s;
+                }
+                .alpaca-calendar__number-button-text::after {
+                    transition-duration: 0s;
+                }
+                @include hover {
+                    color: var(--color-white);
+                    .alpaca-calendar__number-button-text {
+                        color: var(--color-white);
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+        &_checked > .alpaca-calendar__number-button {
+            .alpaca-calendar__number-button-text {
+                color: var(--color-white);
+                background-color: var(--color-blue);
+            }
+            .alpaca-calendar__number-button-text::after {
+                border: 0.0625rem solid var(--color-black-01);
+                background-color: var(--color-black-03);
+            }
+            &::before {
+                background-color: transparent;
+            }
+            &::after {
+                background-color: transparent;
+            }
+        }
+        &_checked-first > .alpaca-calendar__number-button {
+            &::before {
+                background-color: var(--color-blue);
+            }
+            &::after {
+                background-color: transparent;
+            }
+        }
+        &_checked-last > .alpaca-calendar__number-button {
+            &::before {
+                background-color: transparent;
+            }
+            &::after {
+                background-color: var(--color-blue);
+            }
+        }
+        &_selected {
+            background-color: var(--color-blue);
+        }
+        &_selected > .alpaca-calendar__number-button {
+            color: var(--color-white);
+            .alpaca-calendar__number-button-text {
+                color: var(--color-white);
+            }
+        }
+        &-next > .alpaca-calendar__number-button {
+            color: var(--color-white-05);
+            .alpaca-calendar__number-button-text {
+                color: var(--color-white-05);
+            }
+            @include hover {
+                color: var(--color-white);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-white);
+                }
+            }
+            @include tablet {
+                color: var(--color-white-05);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-white-05);
+                }
+                @include hover {
+                    background-color: transparent;
+                    color: var(--color-white-05);
+                    .alpaca-calendar__number-button-text {
+                        background-color: transparent;
+                        color: var(--color-white-05);
+                    }
+                }
+            }
+        }
+        &-next.alpaca-calendar__number_checked > .alpaca-calendar__number-button {
+            color: var(--color-white);
+            .alpaca-calendar__number-button-text {
+                color: var(--color-white);
+            }
+            @include hover {
+                color: var(--color-white);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-white);
+                }
+            }
+            @include tablet {
+                color: var(--color-white);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-white);
+                }
+                @include hover {
+                    background-color: transparent;
+                    color: var(--color-white);
+                    .alpaca-calendar__number-button-text {
+                        background-color: transparent;
+                        color: var(--color-white);
+                    }
+                }
+            }
+        }
+        &-next.alpaca-calendar__number_selected > .alpaca-calendar__number-button {
+            color: var(--color-white);
+            .alpaca-calendar__number-button-text {
+                color: var(--color-white);
+            }
+            @include hover {
+                color: var(--color-white);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-white);
+                }
+            }
+            @include tablet {
+                color: var(--color-white);
+                .alpaca-calendar__number-button-text {
+                    color: var(--color-white);
+                }
+                @include hover {
+                    background-color: transparent;
+                    color: var(--color-white);
+                    .alpaca-calendar__number-button-text {
+                        background-color: transparent;
+                        color: var(--color-white);
+                    }
+                }
+            }
+        }
+    }
+}
